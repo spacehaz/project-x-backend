@@ -1,43 +1,69 @@
-const Item = require('../models/item')
-const { NotFoundError, ForbiddenError, BadRequestError } = require('../errors')
+const { NotFoundError } = require('../errors')
+const Ebay = require('ebay-node-api');
+const { NOT_FOUND } = require('../configs/constants')
+
+const {
+  EBAY_SCOPE,
+  EBAY_CLIENT_SECRET,
+  EBAY_ENV,
+  EBAY_CLIENT_ID
+} = require('../configs/config')
+
+const ebay = new Ebay({
+  clientID: EBAY_CLIENT_ID,
+  env: EBAY_ENV,
+  clientSecret: EBAY_CLIENT_SECRET,
+  body: {
+    grant_type: 'client_credentials',
+    scope: EBAY_SCOPE
+  }
+});
 
 const { ITEM_NOT_FOUND } = require('../configs/constants')
 
-const getItems = (req, res, next) => {
-  Item.find({})
-    .select('+link')
-    .then((items) => {
-      res.status(200).send(items)
-    })
-    .catch(next)
+const getItems = async (req, res, next) => {
+  // const { access_token: accessToken } = await getAuthToken({
+  //   clientID: 'HazretBa-BuymeApp-SBX-919766d65-ddae58b1',
+  //   clientSecret: 'SBX-19766d651b16-7058-4bb5-a849-a6c8'
+  // })
+  const { keywords, limit = 100, price } = req.query
+  // request('https://api.sandbox.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=HazretBa-BuymeApp-SBX-919766d65-ddae58b1&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&keywords=iphone&outputSelector(0)=SellerInfo', {
+  //   json: true,
+  //   headers: {
+  //     'authorization': `Bearer ${accessToken}`,
+  //     'content-type': 'application/json'
+  //   }
+  // }, (err, res) => {
+  //   if (err) { return console.log(err); }
+  // });
+
+  ebay.findItemsByKeywords({
+    keywords,
+    limit,
+    entriesPerPage: 100,
+    maxResults: 100, // optional
+    filter: 'price:[300..800],priceCurrency:USD,conditions{NEW}'
+    // filter: {
+    //   conditions: 'NEW',
+    //   price: '[300..800]'
+    //   // 'itemLocationCountry: US' Only items located in the specified country are returned.
+    //   // 'priceCurrency':USD
+    // }
+  }).then(data => {
+    const result = data[0]
+    const { paginationOutput = [], searchResult = [] } = result || {}
+    const { totalEntries = 0 } = paginationOutput[0]
+    if (Number(totalEntries) === 0) {
+      return next(new NotFoundError(NOT_FOUND))
+    }
+    const { item } = searchResult[0]
+    if (!item) {
+      return next(new NotFoundError(NOT_FOUND))
+    }
+    res.send({ data: item || [], success: true })
+  }, (error) => {
+    next(error)
+  })
 }
 
-const createItem = (req, res, next) => {
-  console.log('request is here')
-  const { title, link } = req.body
-  Item.create({ title, link })
-    .then(item => res.status(201).send({
-      title: item.title,
-      link: item.link
-    }))
-    .catch((e) => next(new BadRequestError(e.message)))
-}
-
-const deleteItem = (req, res, next) => {
-  const { itemId } = req.params
-  Item
-    .findOne({ _id: itemId })
-    // item в принципе не найден в БД по валидному айдишнику
-    .orFail(() => {
-      throw new NotFoundError(ITEM_NOT_FOUND)
-    })
-    .then((item) => {
-        Item.findByIdAndDelete(itemId)
-          .then((result) => res.status(200).send(result))
-          .catch(next)
-    })
-    // айдишник невалиден
-    .catch(next)
-}
-
-module.exports = { getItems, createItem, deleteItem }
+module.exports = { getItems }

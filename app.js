@@ -6,8 +6,10 @@ const { SERVER_PORT, DB } = require('./configs/config');
 const errorHandler = require('./middlewares/error-handler');
 const app = express();
 const router = require('./routes')
+const cors = require('cors')
 
 mongoose.connect(DB, _ => console.log(`DB was connected with url ${DB}`))
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use(router)
