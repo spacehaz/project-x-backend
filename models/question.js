@@ -13,6 +13,11 @@ const questionSchema = new mongoose.Schema({
   requestable: {
     required: true,
     type: Boolean
+  },
+  filter: {
+    required: true,
+    type: String,
+    enum: ['price', 'color', 'location', 'query', 'material', 'type']
   }
 })
 
