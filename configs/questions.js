@@ -122,7 +122,7 @@ module.exports = [
       {
         "id": 14,
         "title": "The clit",
-        "key": "clitoral clit",
+        "key": "clit",
         "condition": "3__8",
         "input_title": "for the clit"
       },
@@ -150,7 +150,7 @@ module.exports = [
       {
         "id": 18,
         "title": "Penis",
-        "key": "vagina pussy",
+        "key": "pussy",
         "condition": "3__7",
         "input_title": "for penis"
       },
@@ -266,7 +266,7 @@ module.exports = [
       {
         "id": 30,
         "title": "Yes",
-        "key": "bluetooth",
+        "key": "mobile",
         "input_title": ""
       },
       {
@@ -339,7 +339,7 @@ module.exports = [
         "id": 38,
         "key": null,
         "title": "what is the difference?",
-        "input_title": "vibro"
+        "input_title": ""
       }
     ]
   },
