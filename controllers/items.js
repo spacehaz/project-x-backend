@@ -28,10 +28,11 @@ const getItems = async (req, res, next) => {
   //   clientSecret: 'SBX-19766d651b16-7058-4bb5-a849-a6c8'
   // })
 
-  const { answers, limit = 100 } = req.query
+  const { answers, limit = 500 } = req.query
   try {
     const answersParsed = JSON.parse(answers)
     const keywords = getCategoriesFromAnswers({ answers: answersParsed })
+    console.log({ keywords })
     ebay.findItemsByKeywords({
       keywords,
       limit,
