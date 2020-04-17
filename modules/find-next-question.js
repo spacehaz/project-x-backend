@@ -9,6 +9,19 @@ const findNextQuestion = ({ answers }) => {
   return checkQuestionValidity({ questionId: Number(lastAnsweredQuestionId) + 1, answers })
 }
 
+const checkAnswerValidity = ({ answer, answers }) => {
+  const { condition } = answer
+  if (!condition) { return answer }
+  const conditionParsed = condition.split('/')
+  for (let x = 0; x < conditionParsed.length; x++) {
+    const singleAnswerCondition = conditionParsed[x].split('__')
+    if (Number(answers[singleAnswerCondition[0]]) !== Number(singleAnswerCondition[1])) {
+      return false
+    }
+  }
+  return true
+}
+
 const checkQuestionValidity = ({ questionId, answers }) => {
   const question = findQuestionById({ questionId })
   if (!question) { return }
@@ -21,7 +34,7 @@ const checkQuestionValidity = ({ questionId, answers }) => {
       return checkQuestionValidity({ answers, questionId: Number(questionId) + 1 })
     }
   }
-  return question
+  return { ...question, answers: question.answers.filter(answer => checkAnswerValidity({ answers, answer })) }
 }
 
 // findNextQuestion({ answers })

@@ -1,14 +1,14 @@
 module.exports = [
   {
-    "title": "do you know the exact toy you want to buy?",
+    "title": "Do you know the exact toy you want to buy?",
     "id": 1,
-    "parent_id": null,
     "answers": [
       {
         "id": 1,
         "title": "Yes",
         "input_title": "",
-        "stop": true
+        "stop": true,
+        "disabled": true
       },
       {
         "id": 2,
@@ -19,7 +19,6 @@ module.exports = [
   },
   {
     "title": "Who will use it?",
-    "parent_id": 1,
     "condition": "1__2",
     "id": 2,
     "answers": [
@@ -37,7 +36,6 @@ module.exports = [
   },
   {
     "title": "Your sex?",
-    "parent_id": 2,
     "condition": "1__2",
     "id": 3,
     "answers": [
@@ -55,7 +53,6 @@ module.exports = [
   },
   {
     "title": "Your partner’s sex?",
-    "parent_id": 3,
     "condition": "1__2/2__4",
     "id": 4,
     "answers": [
@@ -71,7 +68,6 @@ module.exports = [
   },
   {
     "title": "Can you have sex with your partner offline?",
-    "parent_id": 4,
     "condition": "1__2/2__4",
     "id": 5,
     "answers": [
@@ -89,7 +85,6 @@ module.exports = [
   },
   {
     "title": "What’s your experience?",
-    "parent_id": 5,
     "condition": "1__2",
     "id": 6,
     "answers": [
@@ -97,25 +92,24 @@ module.exports = [
         "id": 11,
         "title": "Never tried",
         "input_title": "newbie",
-        "key": "newbie"
+        "key": null
       },
       {
         "id": 12,
         "title": "Tried couple times, looking for new",
         "input_title": "amateur",
-        "key": "newbie"
+        "key": null
       },
       {
         "id": 13,
         "title": "Let’s just say I have some experience",
         "input_title": "pro",
-        "key": "newbie"
+        "key": null
       }
     ]
   },
   {
     "title": "What’s a favorite in musturbation?",
-    "parent_id": 6,
     "condition": "1__2",
     "id": 7,
     "answers": [
@@ -123,63 +117,62 @@ module.exports = [
         "id": 14,
         "title": "The clit",
         "key": "clit",
-        "condition": "3__8",
+        "condition": "3__6",
         "input_title": "for the clit"
       },
       {
         "id": 15,
         "title": "Feel it inside",
         "key": "dildo",
-        "condition": "3__8",
+        "condition": "3__6",
         "input_title": "dildo"
       },
       {
         "id": 16,
         "title": "G-spot",
         "key": "g-spot",
-        "condition": "3__8",
+        "condition": "3__6",
         "input_title": "for g-spot"
       },
       {
         "id": 17,
         "title": "Anal",
         "key": "anal",
-        "condition": "3__8",
+        "condition": "3__6",
         "input_title": "for anal"
       },
       {
         "id": 18,
         "title": "Penis",
         "key": "pussy",
-        "condition": "3__7",
+        "condition": "3__5",
         "input_title": "for penis"
       },
       {
         "id": 19,
         "title": "Balls",
         "key": "testicle massager",
-        "condition": "3__7",
+        "condition": "3__5",
         "input_title": "for Balls"
       },
       {
         "id": 20,
         "title": "Anal",
         "key": "anal",
-        "condition": "3__7",
+        "condition": "3__5",
         "input_title": "for anal"
       },
       {
         "id": 21,
         "title": "Prostate",
         "key": "prostate",
-        "condition": "3__7",
+        "condition": "3__5",
         "input_title": "for prostate"
       }
     ]
   },
   {
     "title": "Do you like vibrations?",
-    "parent_id": 7,
     "condition": "1__2",
     "id": 8,
     "answers": [
@@ -187,7 +180,7 @@ module.exports = [
         "id": 22,
         "title": "yes",
         "key": "vibro",
-        "input_title": "vibro"
+        "input_title": "mode"
       },
       {
         "id": 23,
@@ -199,7 +192,6 @@ module.exports = [
   },
   {
     "title": "Do you want to use it taking a bath? ",
-    "parent_id": 8,
     "condition": "1__2/8__22",
     "id": 9,
     "answers": [
@@ -219,7 +211,6 @@ module.exports = [
   },
   {
     "title": "How portable should it be? ",
-    "parent_id": 9,
     "condition": "1__2/8__22",
     "id": 10,
     "answers": [
@@ -231,7 +222,7 @@ module.exports = [
       },
       {
         "id": 27,
-        "key": "portable",
+        "key": null, // надо смотреть категорию
         "input_title": "portable",
         "title": "planning to travel",
       }
@@ -239,7 +230,6 @@ module.exports = [
   },
   {
     "title": "Are you ok with some noise? ",
-    "parent_id": 10,
     "id": 11,
     "condition": "1__2/8__22",
     "answers": [
@@ -251,7 +241,7 @@ module.exports = [
       },
       {
         "id": 29,
-        "key": "silent",
+        "key": null, // надо придумать позднее
         "title": "No",
         "input_title": ""
       }
@@ -259,14 +249,13 @@ module.exports = [
   },
   {
     "title": "Do you want to control it with your smartphone?",
-    "parent_id": 11,
     "id": 12,
     "condition": "1__2/8__22",
     "answers": [
       {
         "id": 30,
         "title": "Yes",
-        "key": "mobile",
+        "key": "bluetooth",
         "input_title": ""
       },
       {
@@ -279,7 +268,6 @@ module.exports = [
   },
   {
     "title": "Are you allergic to latex?",
-    "parent_id": 12,
     "condition": "1__2",
     "id": 13,
     "answers": [
@@ -297,7 +285,6 @@ module.exports = [
   },
   {
     "title": "what material you’d like? ",
-    "parent_id": 13,
     "condition": "1__2",
     "id": 14,
     "answers": [
@@ -345,7 +332,6 @@ module.exports = [
   },
   {
     "title": "How much time are you ready to spend to take care of your toy?",
-    "parent_id": 14,
     "condition": "1__2/14__38",
     "id": 15,
     "answers": [
@@ -371,28 +357,31 @@ module.exports = [
   },
   {
     "title": "What’s your budget?",
-    "parent_id": 15,
     "id": 16,
     "condition": "1__2",
     "answers": [
       {
         "id": 42,
-        "key": "0-25%",
+        "key": "0__25",
+        "calculate": "price",
         "title": "0-25%"
       },
       {
         "id": 43,
-        "key": "25-50%",
+        "key": "25__50",
+        "calculate": "price",
         "title": "25-50%"
       },
       {
         "id": 44,
-        "key": "50-75%",
+        "key": "50__75",
+        "calculate": "price",
         "title": "50-75%"
       },
       {
         "id": 45,
-        "key": "75-100%",
+        "key": "75__100",
+        "calculate": "price",
         "title": "75-100%"
       }
     ]
