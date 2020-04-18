@@ -18,9 +18,15 @@ module.exports = [
     ]
   },
   {
+    "title": "Ok then just type in what you want.",
+    "condition": "1__1",
+    "id": 2,
+    "no_next_question": true
+  },
+  {
     "title": "Who will use it?",
     "condition": "1__2",
-    "id": 2,
+    "id": 3,
     "answers": [
       {
         "id": 3,
@@ -37,7 +43,7 @@ module.exports = [
   {
     "title": "Your sex?",
     "condition": "1__2",
-    "id": 3,
+    "id": 4,
     "answers": [
       {
         "id": 5,
@@ -53,8 +59,8 @@ module.exports = [
   },
   {
     "title": "Your partner’s sex?",
-    "condition": "1__2/2__4",
-    "id": 4,
+    "condition": "1__2/3__4",
+    "id": 5,
     "answers": [
       {
         "id": 7,
@@ -70,8 +76,8 @@ module.exports = [
   },
   {
     "title": "Can you have sex with your partner offline?",
-    "condition": "1__2/2__4",
-    "id": 5,
+    "condition": "1__2/3__4",
+    "id": 6,
     "answers": [
       {
         "id": 9,
@@ -88,7 +94,7 @@ module.exports = [
   {
     "title": "What’s your experience?",
     "condition": "1__2",
-    "id": 6,
+    "id": 7,
     "answers": [
       {
         "id": 11,
@@ -113,62 +119,62 @@ module.exports = [
   {
     "title": "What’s a favorite in musturbation?",
     "condition": "1__2",
-    "id": 7,
+    "id": 8,
     "answers": [
       {
         "id": 14,
         "title": "The clit",
         "key": "clit",
-        "condition": "3__6",
+        "condition": "4__6",
         "input_title": "For the clit"
       },
       {
         "id": 15,
         "title": "Feel it inside",
         "key": "dildo",
-        "condition": "3__6",
+        "condition": "4__6",
         "input_title": "Dildo"
       },
       {
         "id": 16,
         "title": "G-spot",
         "key": "g-spot",
-        "condition": "3__6",
+        "condition": "4__6",
         "input_title": "For g-spot"
       },
       {
         "id": 17,
         "title": "Anal",
         "key": "anal",
-        "condition": "3__6",
+        "condition": "4__6",
         "input_title": "For anal"
       },
       {
         "id": 18,
         "title": "Penis",
         "key": "pussy",
-        "condition": "3__5",
+        "condition": "4__5",
         "input_title": "For penis"
       },
       {
         "id": 19,
         "title": "Balls",
         "key": "testicle massager",
-        "condition": "3__5",
+        "condition": "4__5",
         "input_title": "For Balls"
       },
       {
         "id": 20,
         "title": "Anal",
         "key": "anal",
-        "condition": "3__5",
+        "condition": "4__5",
         "input_title": "For anal"
       },
       {
         "id": 21,
         "title": "Prostate",
         "key": "prostate",
-        "condition": "3__5",
+        "condition": "4__5",
         "input_title": "For prostate"
       }
     ]
@@ -176,7 +182,7 @@ module.exports = [
   {
     "title": "Do you like vibrations?",
     "condition": "1__2",
-    "id": 8,
+    "id": 9,
     "answers": [
       {
         "id": 22,
@@ -194,8 +200,8 @@ module.exports = [
   },
   {
     "title": "Do you want to use it taking a bath? ",
-    "condition": "1__2/8__22",
-    "id": 9,
+    "condition": "1__2/9__22",
+    "id": 10,
     "answers": [
       {
         "id": 24,
@@ -213,8 +219,8 @@ module.exports = [
   },
   {
     "title": "How portable should it be? ",
-    "condition": "1__2/8__22",
-    "id": 10,
+    "condition": "1__2/9__22",
+    "id": 11,
     "answers": [
       {
         "id": 26,
@@ -224,16 +230,16 @@ module.exports = [
       },
       {
         "id": 27,
-        "key": null, // надо смотреть категорию
+        "key": null,
         "input_title": "portable",
-        "title": "Planning to travel",
+        "title": "Planning to travel"
       }
     ]
   },
   {
     "title": "Are you ok with some noise? ",
-    "id": 11,
-    "condition": "1__2/8__22",
+    "id": 12,
+    "condition": "1__2/9__22",
     "answers": [
       {
         "id": 28,
@@ -243,7 +249,7 @@ module.exports = [
       },
       {
         "id": 29,
-        "key": null, // надо придумать позднее
+        "key": null,
         "title": "No",
         "input_title": ""
       }
@@ -251,8 +257,8 @@ module.exports = [
   },
   {
     "title": "Do you want to control it with your smartphone?",
-    "id": 12,
-    "condition": "1__2/8__22",
+    "id": 13,
+    "condition": "1__2/9__22",
     "answers": [
       {
         "id": 30,
@@ -271,7 +277,7 @@ module.exports = [
   {
     "title": "Are you allergic to latex?",
     "condition": "1__2",
-    "id": 13,
+    "id": 14,
     "answers": [
       {
         "id": 32,
@@ -288,7 +294,7 @@ module.exports = [
   {
     "title": "what material you’d like? ",
     "condition": "1__2",
-    "id": 14,
+    "id": 15,
     "answers": [
       {
         "id": 34,
@@ -313,12 +319,14 @@ module.exports = [
         "key": "plastic",
         "title": "ABS Plastic",
         "input_title": "Plastic"
-      },{
+      },
+      {
         "id": 37,
         "key": "glass",
         "title": "Glass",
         "input_title": "Material 2"
-      },{
+      },
+      {
         "id": 37,
         "key": "ceramic",
         "title": "Ceramic",
@@ -334,8 +342,8 @@ module.exports = [
   },
   {
     "title": "How much time are you ready to spend to take care of your toy?",
-    "condition": "1__2/14__38",
-    "id": 15,
+    "condition": "1__2/15__38",
+    "id": 16,
     "answers": [
       {
         "id": 39,
@@ -359,7 +367,7 @@ module.exports = [
   },
   {
     "title": "What’s your budget?",
-    "id": 16,
+    "id": 17,
     "condition": "1__2",
     "answers": [
       {
