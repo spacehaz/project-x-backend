@@ -39,14 +39,13 @@ const getItems = async (req, res, next) => {
     ebay.findItemsByKeywords({
       keywords,
       limit,
-      entriesPerPage: 100,
-      maxResults: 100, // optional
-      // filter: {
+      maxResults: 500, // optional
+      filter: {
       //   conditions: 'NEW',
-      //   price: '[300..800]'
+        price: '[300..800]'
       //   // 'itemLocationCountry: US' Only items located in the specified country are returned.
       //   // 'priceCurrency':USD
-      // }
+      }
     }).then(data => {
       const result = data[0]
       const { paginationOutput = [], searchResult = [] } = result || {}
