@@ -42,12 +42,12 @@ module.exports = [
       {
         "id": 5,
         "title": "Male",
-        "input_title": ""
+        "input_title": "Male"
       },
       {
         "id": 6,
         "title": "Female",
-        "input_title": ""
+        "input_title": "Female"
       }
     ]
   },
@@ -59,10 +59,12 @@ module.exports = [
       {
         "id": 7,
         "title": "Male",
+        "input_title": "Male"
       },
       {
         "id": 8,
         "title": "Female",
+        "input_title": "Female"
       }
     ]
   },
@@ -79,7 +81,7 @@ module.exports = [
       {
         "id": 10,
         "title": "No",
-        "input_title": "online"
+        "input_title": "Online"
       }
     ]
   },
@@ -118,56 +120,56 @@ module.exports = [
         "title": "The clit",
         "key": "clit",
         "condition": "3__6",
-        "input_title": "for the clit"
+        "input_title": "For the clit"
       },
       {
         "id": 15,
         "title": "Feel it inside",
         "key": "dildo",
         "condition": "3__6",
-        "input_title": "dildo"
+        "input_title": "Dildo"
       },
       {
         "id": 16,
         "title": "G-spot",
         "key": "g-spot",
         "condition": "3__6",
-        "input_title": "for g-spot"
+        "input_title": "For g-spot"
       },
       {
         "id": 17,
         "title": "Anal",
         "key": "anal",
         "condition": "3__6",
-        "input_title": "for anal"
+        "input_title": "For anal"
       },
       {
         "id": 18,
         "title": "Penis",
         "key": "pussy",
         "condition": "3__5",
-        "input_title": "for penis"
+        "input_title": "For penis"
       },
       {
         "id": 19,
         "title": "Balls",
         "key": "testicle massager",
         "condition": "3__5",
-        "input_title": "for Balls"
+        "input_title": "For Balls"
       },
       {
         "id": 20,
         "title": "Anal",
         "key": "anal",
         "condition": "3__5",
-        "input_title": "for anal"
+        "input_title": "For anal"
       },
       {
         "id": 21,
         "title": "Prostate",
         "key": "prostate",
         "condition": "3__5",
-        "input_title": "for prostate"
+        "input_title": "For prostate"
       }
     ]
   },
@@ -179,14 +181,14 @@ module.exports = [
       {
         "id": 22,
         "title": "yes",
-        "key": "vibro",
-        "input_title": "mode"
+        "key": "mode",
+        "input_title": null
       },
       {
         "id": 23,
         "title": "no",
         "key": null,
-        "input_title": ""
+        "input_title": null
       }
     ]
   },
@@ -224,7 +226,7 @@ module.exports = [
         "id": 27,
         "key": null, // надо смотреть категорию
         "input_title": "portable",
-        "title": "planning to travel",
+        "title": "Planning to travel",
       }
     ]
   },
@@ -292,40 +294,40 @@ module.exports = [
         "id": 34,
         "title": "Latex",
         "key": "latex",
-        "input_title": "latex"
+        "input_title": "Latex"
       },
       {
         "id": 35,
         "key": "wood",
         "title": "Wood",
-        "input_title": "wood"
+        "input_title": "Wood"
       },
       {
         "id": 36,
         "key": "silicone",
         "title": "Silicone",
-        "input_title": "silicone"
+        "input_title": "Silicone"
       },
       {
         "id": 37,
         "key": "plastic",
         "title": "ABS Plastic",
-        "input_title": "plastic"
+        "input_title": "Plastic"
       },{
         "id": 37,
         "key": "glass",
         "title": "Glass",
-        "input_title": "material 2"
+        "input_title": "Material 2"
       },{
         "id": 37,
         "key": "ceramic",
         "title": "Ceramic",
-        "input_title": "ceramic"
+        "input_title": "Ceramic"
       },
       {
         "id": 38,
         "key": null,
-        "title": "what is the difference?",
+        "title": "What is the difference?",
         "input_title": ""
       }
     ]

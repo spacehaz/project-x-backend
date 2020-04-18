@@ -2,7 +2,11 @@ const { NotFoundError, BadRequestError } = require('../errors')
 const Ebay = require('ebay-node-api');
 const { NOT_FOUND, BAD_REQUEST } = require('../configs/constants')
 const Filter = require('../models/filter')
+const { DEFAULT_KEYWORDS } = require('../configs/config')
 const { getCategoriesFromAnswers } = require('../modules')
+
+
+
 const {
   EBAY_SCOPE,
   EBAY_CLIENT_SECRET,
@@ -31,7 +35,7 @@ const getItems = async (req, res, next) => {
   const { answers, limit = 500, keywords: keywordsFromUser } = req.query
   try {
     const answersParsed = JSON.parse(answers)
-    const keywords = keywordsFromUser || getCategoriesFromAnswers({ answers: answersParsed })
+    const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || DEFAULT_KEYWORDS
     ebay.findItemsByKeywords({
       keywords,
       limit,
@@ -54,7 +58,7 @@ const getItems = async (req, res, next) => {
       if (!item) {
         return res.send({ data: [], success: true, keywords })
       }
-      res.send({ data: item, success: true, keywords })
+      res.send({ data: item, success: true, keywords: keywords === DEFAULT_KEYWORDS ? '' : keywords })
     }, (error) => {
       next(error)
     })
