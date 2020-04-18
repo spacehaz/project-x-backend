@@ -22,7 +22,7 @@ const getCategoriesFromAnswers = ({ answers }) => {
       keywords.push(answer.key) 
     }
   })
-  if (!keywords.length) { return 'sex toy' }
+  if (!keywords.length) { return }
   return keywords.join(' ')
 }
 
