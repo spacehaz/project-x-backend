@@ -34,7 +34,7 @@ const checkQuestionValidity = ({ questionId, answers }) => {
       return checkQuestionValidity({ answers, questionId: Number(questionId) + 1 })
     }
   }
-  return { ...question, answers: question.answers.filter(answer => checkAnswerValidity({ answers, answer })) }
+  return { ...question, answers: question.answers ? question.answers.filter(answer => checkAnswerValidity({ answers, answer })) : null }
 }
 
 // findNextQuestion({ answers })

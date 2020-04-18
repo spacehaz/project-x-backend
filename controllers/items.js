@@ -34,8 +34,8 @@ const getItems = async (req, res, next) => {
 
   const { answers, limit = 500, keywords: keywordsFromUser } = req.query
   try {
-    const answersParsed = JSON.parse(answers)
-    const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || DEFAULT_KEYWORDS
+    const answersParsed = answers && JSON.parse(answers)
+    const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || keywordsFromUser || DEFAULT_KEYWORDS
     ebay.findItemsByKeywords({
       keywords,
       limit,
