@@ -1,31 +1,35 @@
 const questions = require('../configs/questions.js')
+const { DEFAULT_KEYWORDS } = require('../configs/config')
 
-// const answers = {
-//   1:2,
-//   2:3,
-//   3:5,
-//   6:11,
-//   7:14,
-//   8:22,
-//   9:24,
-//   10:27,
-//   11:29,
-//   12:30
-// }
-const getCategoriesFromAnswers = ({ answers }) => {
-  const keywords = []
+const getCategoriesFromAnswers = ({ answers, maxPrice, keywordsFromUser }) => {
+  const result = {
+    keywords: [],
+    min: undefined,
+    max: undefined
+  }
   questions.forEach(question => {
     if (answers[String(question.id)]) {
       const answer = question.answers.find(answer => Number(answer.id) === Number(answers[String(question.id)]))
       
       if (!answer.key) { return }
-      keywords.push(answer.key) 
+      if(answer.calculate) {
+        const [ min, max ] = answer.key.split('__')
+        const percentage = maxPrice / 100
+        result.min = percentage * min
+        result.max = percentage * max
+      } else {
+        result.keywords.push(answer.key)
+      }
     }
   })
-  if (!keywords.length) { return }
-  return keywords.join(' ')
+  if (!result.keywords.length) {
+    return { keywords: keywordsFromUser || DEFAULT_KEYWORDS }
+  }
+  return {
+    ...result,
+    keywords: result.keywords.join(' '),
+  }
 }
 
-// getCategoriesFromAnswers({ answers })
 
 module.exports = getCategoriesFromAnswers
