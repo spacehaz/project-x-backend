@@ -32,20 +32,14 @@ const getItems = async (req, res, next) => {
   //   clientSecret: 'SBX-19766d651b16-7058-4bb5-a849-a6c8'
   // })
 
-  const { answers, limit = 500, keywords: keywordsFromUser } = req.query
+  const { answers, keywords: keywordsFromUser } = req.query
   try {
     const answersParsed = answers && JSON.parse(answers)
     const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || keywordsFromUser || DEFAULT_KEYWORDS
     ebay.findItemsByKeywords({
       keywords,
-      limit,
-      maxResults: 500, // optional
-      filter: {
-      //   conditions: 'NEW',
-        price: '[300..800]'
-      //   // 'itemLocationCountry: US' Only items located in the specified country are returned.
-      //   // 'priceCurrency':USD
-      }
+      limit: 500,
+      filter: 'price:[300..800],priceCurrency:USD,conditions{NEW}'
     }).then(data => {
       const result = data[0]
       const { paginationOutput = [], searchResult = [] } = result || {}
@@ -73,8 +67,6 @@ const getItems = async (req, res, next) => {
   // }, (err, res) => {
   //   if (err) { return console.log(err); }
   // });
-
-  
 }
 
 module.exports = { getItems }
