@@ -187,7 +187,7 @@ module.exports = [
       {
         "id": 22,
         "title": "yes",
-        "key": "mode",
+        "key": "", // подумать насчет категории
         "input_title": null
       },
       {
