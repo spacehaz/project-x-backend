@@ -36,27 +36,26 @@ const getItems = async (req, res, next) => {
   try {
     const answersParsed = answers && JSON.parse(answers)
     const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || keywordsFromUser || DEFAULT_KEYWORDS
-    const options = {
-      keywords,
-      limit: 500,
-      entriesPerPage: 500,
-      filter: 'price:[300..800],priceCurrency:USD,conditions{NEW}'
-    }
-    ebay.findItemsByKeywords(options).then(data => {
-      const result = data[0]
-      const { paginationOutput = [], searchResult = [] } = result || {}
-      const { totalEntries = 0 } = paginationOutput[0]
-      if (Number(totalEntries) === 0) {
-        return next(new NotFoundError(NOT_FOUND))
-      }
-      const { item } = searchResult[0]
-      if (!item) {
-        return res.send({ data: [], success: true, keywords })
-      }
-      res.send({ data: item, success: true, ...options, keywords: keywords === DEFAULT_KEYWORDS ? '' : keywords })
-    }, (error) => {
-      next(error)
-    })
+    ebay.getAccessToken()
+      .then((data) => {
+        ebay.searchItems({
+          keyword: keywords,
+          limit: 200
+          // entriesPerPage: 500,
+          // filter: 'price:[300..800],priceCurrency:USD,conditions{NEW}'
+        }).then(data => {
+          const { total, itemSummaries } = JSON.parse(data)
+          if (Number(total) === 0) {
+            return next(new NotFoundError(NOT_FOUND))
+          }
+          if (!itemSummaries) {
+            return res.send({ data: [], success: true, keywords })
+          }
+          res.send({ data: itemSummaries, success: true, keywords: keywords === DEFAULT_KEYWORDS ? '' : keywords })
+        }, (error) => {
+          next(error)
+        })
+      })
   } catch (e) {
     next(new BadRequestError(BAD_REQUEST))
   }
