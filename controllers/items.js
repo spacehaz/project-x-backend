@@ -40,9 +40,8 @@ const getItems = async (req, res, next) => {
       .then((data) => {
         ebay.searchItems({
           keyword: keywords,
-          limit: 200
-          // entriesPerPage: 500,
-          // filter: 'price:[300..800],priceCurrency:USD,conditions{NEW}'
+          limit: 200,
+          filter: 'price:[0..10],priceCurrency:USD,conditions{NEW}'
         }).then(data => {
           const { total, itemSummaries } = JSON.parse(data)
           if (Number(total) === 0) {
