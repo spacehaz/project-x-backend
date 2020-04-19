@@ -36,11 +36,13 @@ const getItems = async (req, res, next) => {
   try {
     const answersParsed = answers && JSON.parse(answers)
     const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || keywordsFromUser || DEFAULT_KEYWORDS
-    ebay.findItemsByKeywords({
+    const options = {
       keywords,
       limit: 500,
+      entriesPerPage: 500,
       filter: 'price:[300..800],priceCurrency:USD,conditions{NEW}'
-    }).then(data => {
+    }
+    ebay.findItemsByKeywords(options).then(data => {
       const result = data[0]
       const { paginationOutput = [], searchResult = [] } = result || {}
       const { totalEntries = 0 } = paginationOutput[0]
@@ -51,7 +53,7 @@ const getItems = async (req, res, next) => {
       if (!item) {
         return res.send({ data: [], success: true, keywords })
       }
-      res.send({ data: item, success: true, keywords: keywords === DEFAULT_KEYWORDS ? '' : keywords })
+      res.send({ data: item, success: true, ...options, keywords: keywords === DEFAULT_KEYWORDS ? '' : keywords })
     }, (error) => {
       next(error)
     })
