@@ -2,10 +2,8 @@ const { NotFoundError, BadRequestError } = require('../errors')
 const Ebay = require('ebay-node-api');
 const { NOT_FOUND, BAD_REQUEST } = require('../configs/constants')
 const Filter = require('../models/filter')
-const { DEFAULT_KEYWORDS } = require('../configs/config')
 const { getCategoriesFromAnswers } = require('../modules')
-
-
+const { DEFAULT_KEYWORDS } = require('../configs/config')
 
 const {
   EBAY_SCOPE,
@@ -32,16 +30,16 @@ const getItems = async (req, res, next) => {
   //   clientSecret: 'SBX-19766d651b16-7058-4bb5-a849-a6c8'
   // })
 
-  const { answers, keywords: keywordsFromUser } = req.query
+  const { answers, keywords: keywordsFromUser, maxPrice } = req.query
   try {
     const answersParsed = answers && JSON.parse(answers)
-    const keywords = getCategoriesFromAnswers({ answers: answersParsed }) || keywordsFromUser || DEFAULT_KEYWORDS
+    const { keywords, min, max } = getCategoriesFromAnswers({ answers: answersParsed, maxPrice, keywordsFromUser })
     ebay.getAccessToken()
       .then((data) => {
         ebay.searchItems({
           keyword: keywords,
           limit: 200,
-          filter: 'price:[0..10],priceCurrency:USD,conditions{NEW}'
+          filter: `price:[${min || 0}..${max || 1000}],priceCurrency:USD,conditions{NEW}`
         }).then(data => {
           const { total, itemSummaries } = JSON.parse(data)
           if (Number(total) === 0) {
