@@ -15,9 +15,20 @@ const checkAnswerValidity = ({ answer, answers }) => {
   const conditionParsed = condition.split('/')
   for (let x = 0; x < conditionParsed.length; x++) {
     const singleAnswerCondition = conditionParsed[x].split('__')
-    if (Number(answers[singleAnswerCondition[0]]) !== Number(singleAnswerCondition[1])) {
-      return false
+    if (singleAnswerCondition[1].indexOf('||') === -1) {
+      if (Number(answers[singleAnswerCondition[0]]) !== Number(singleAnswerCondition[1])) {
+        return false
+      }
+    } else {
+      const [ answer1, answer2 ] = singleAnswerCondition[1].split('||')
+      if (
+        Number(answers[singleAnswerCondition[0]]) !== Number(answer1) &&
+        Number(answers[singleAnswerCondition[0]]) !== Number(answer2) 
+      ) {
+        return false
+      }
     }
+    
   }
   return true
 }
