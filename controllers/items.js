@@ -24,6 +24,36 @@ const ebay = new Ebay({
 
 const { ITEM_NOT_FOUND } = require('../configs/constants')
 
+const ebayRequest = ({ keywords, min, max }) => {
+  return new Promise((resolve, reject) => {
+    ebay.getAccessToken()
+      .then((data) => {
+        ebay.searchItems({
+          keyword: keywords,
+          limit: 200,
+          filter: `price:[${min || 0}..${max || 10000}],priceCurrency:USD`
+        }).then(data => {
+          resolve(data)
+        }, (error) => {
+          reject(error)
+        })
+      })
+  })
+}
+
+const defineKeywords = ({ keywords, primary }) => {
+  return keywords
+    .split(' ')
+    .filter(keyword => {
+      if (!primary) { return true }
+      return keyword.indexOf('1_') > -1
+    })
+    .map(keyword => {
+      if (keyword.indexOf('_') === -1) { return keyword }
+      return keyword.split('_')[1]
+    }).join(' ')
+}
+
 const getItems = async (req, res, next) => {
   // const { access_token: accessToken } = await getAuthToken({
   //   clientID: 'HazretBa-BuymeApp-SBX-919766d65-ddae58b1',
@@ -31,28 +61,26 @@ const getItems = async (req, res, next) => {
   // })
 
   const { answers, keywords: keywordsFromUser, maxPrice } = req.query
+
   try {
     const answersParsed = answers && JSON.parse(answers)
     const { keywords, min, max } = getCategoriesFromAnswers({ answers: answersParsed, maxPrice, keywordsFromUser })
-    ebay.getAccessToken()
-      .then((data) => {
-        ebay.searchItems({
-          keyword: keywords,
-          limit: 200,
-          filter: `price:[${min || 0}..${max || 1000}],priceCurrency:USD,conditions{NEW}`
-        }).then(data => {
-          const { total, itemSummaries } = JSON.parse(data)
-          if (Number(total) === 0) {
-            return next(new NotFoundError(NOT_FOUND))
-          }
-          if (!itemSummaries) {
-            return res.send({ data: [], success: true, keywords })
-          }
-          res.send({ data: itemSummaries, success: true, keywords: keywords === DEFAULT_KEYWORDS ? '' : keywords })
-        }, (error) => {
-          next(error)
-        })
-      })
+    const currentKeywords = defineKeywords({ keywords })
+    const data = await ebayRequest({ keywords: currentKeywords, min, max })
+    const { itemSummaries } = JSON.parse(data)
+    if (!itemSummaries) {
+      const currentKeywords = defineKeywords({ keywords, primary: true })
+      const data = await ebayRequest({ keywords: currentKeywords, min, max })
+      const { itemSummaries: ultimateSummary } = JSON.parse(data)
+      if (!ultimateSummary) {
+        console.log('not successful', currentKeywords)
+        return res.send({ data: [], success: false, keywords: currentKeywords })
+      }
+      console.log('ultimate was successful', currentKeywords)
+      return res.send({ data: ultimateSummary, success: true, keywords: currentKeywords })
+    }
+    console.log('initial was successful', currentKeywords)
+    return res.send({ data: itemSummaries, success: true, keywords: currentKeywords })
   } catch (e) {
     next(new BadRequestError(BAD_REQUEST))
   }

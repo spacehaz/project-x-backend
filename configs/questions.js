@@ -47,21 +47,25 @@ module.exports = [
       {
         "id": 5,
         "title": "Male",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:MALE'
       },
       {
         "id": 6,
         "title": "Female",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:FEMALE'
       },
       {
         "id": 7,
         "title": "Intersex male reproductive organs",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:MALE'
       }, {
         "id": 8,
         "title": "Intersex female reproductive organs",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:FEMALE'
       }
     ]
   },
@@ -73,21 +77,25 @@ module.exports = [
       {
         "id": 9,
         "title": "Male",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:MALE'
       },
       {
         "id": 10,
         "title": "Female",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:FEMALE'
       },
       {
         "id": 11,
         "title": "Intersex male reproductive organs",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:MALE'
       }, {
         "id": 12,
         "title": "Intersex female reproductive organs",
-        "input_title": ""
+        "input_title": "",
+        "key": 'GENDER:FEMALE'
       }
     ]
   },
@@ -117,19 +125,19 @@ module.exports = [
         "id": 15,
         "title": "Never tried",
         "input_title": "newbie",
-        "key": null
+        "key": 'EXPERIENCE:NEWBIE'
       },
       {
         "id": 16,
         "title": "Tried couple times, looking for new",
         "input_title": "amateur",
-        "key": null
+        "key": 'EXPERIENCE:AMATEUR'
       },
       {
         "id": 17,
         "title": "Let’s just say I have some experience",
         "input_title": "pro",
-        "key": null
+        "key": 'EXPERIENCE:PRO'
       }
     ]
   },
@@ -141,58 +149,59 @@ module.exports = [
       {
         "id": 18,
         "title": "The clit",
-        "key": "clit",
         "condition": "4__6||8",
-        "input_title": "For the clit"
+        "input_title": "For the clit",
+        "key": 'TYPE:PENIS'
       },
       {
         "id": 19,
         "title": "Feel it inside",
-        "key": "dildo",
         "condition": "4__6||8",
-        "input_title": "Dildo"
+        "input_title": "Dildo",
+        "key": 'TYPE:DILDO'
       },
       {
         "id": 20,
         "title": "G-spot",
-        "key": "g-spot",
         "condition": "4__6||8",
-        "input_title": "For g-spot"
+        "input_title": "For g-spot",
+         "key": 'TYPE:G-SPOT'
       },
       {
         "id": 21,
         "title": "Anal",
-        "key": "anal",
         "condition": "4__6||8",
-        "input_title": "For anal"
+        "input_title": "For anal",
+        "key": 'TYPE:BUTT-PLUG'
       },
       {
         "id": 22,
         "title": "Penis",
-        "key": "pussy",
+        "key": "TYPE:VAGINA",
         "condition": "4__5||7",
         "input_title": "For penis"
       },
       {
         "id": 23,
         "title": "Balls",
-        "key": "testicle massager",
+        "key": "TYPE:TESTICLES",
         "condition": "4__5||7",
         "input_title": "For Balls"
       },
       {
         "id": 24,
         "title": "Anal",
-        "key": "anal",
         "condition": "4__5||7",
-        "input_title": "For anal"
+        "input_title": "For anal",
+        "key": 'TYPE:BUTT-PLUG'
       },
       {
         "id": 25,
         "title": "Prostate",
         "key": "prostate",
         "condition": "4__5||7",
-        "input_title": "For prostate"
+        "input_title": "For prostate",
+        "key": 'TYPE:PROSTATE'
       }
     ]
   },
@@ -205,7 +214,8 @@ module.exports = [
         "id": 26,
         "title": "yes",
         "key": "", // подумать насчет категории
-        "input_title": null
+        "input_title": null,
+        "key": 'EXTRA:VIBRO'
       },
       {
         "id": 27,
@@ -223,8 +233,8 @@ module.exports = [
       {
         "id": 28,
         "title": "yes",
-        "key": "waterproof",
-        "input_title": ""
+        "input_title": "",
+        "key": 'EXTRA:WATERPROOF'
       },
       {
         "id": 29,
@@ -241,7 +251,6 @@ module.exports = [
     "answers": [
       {
         "id": 30,
-        "key": null,
         "title": "home use only",
         "input_title": ""
       },
@@ -249,7 +258,8 @@ module.exports = [
         "id": 31,
         "key": null,
         "input_title": "portable",
-        "title": "Planning to travel"
+        "title": "Planning to travel",
+        "key": 'SIZE:PORTABLE'
       }
     ]
   },
@@ -262,7 +272,8 @@ module.exports = [
         "id": 32,
         "key": null,
         "title": "Yes",
-        "input_title": ""
+        "input_title": "",
+        "key": 'EXTRA:VIBRO'
       },
       {
         "id": 33,
@@ -281,7 +292,8 @@ module.exports = [
         "id": 34,
         "title": "Yes",
         "key": "bluetooth",
-        "input_title": ""
+        "input_title": "",
+        "key": 'CONTROL:WIRELESS'
       },
       {
         "id": 35,
@@ -316,38 +328,43 @@ module.exports = [
       {
         "id": 38,
         "title": "Latex",
-        "key": "latex",
-        "input_title": "Latex"
+        "condition": "14__37",
+        "input_title": "Latex",
+        "key": 'MATERIAL:LATEX'
       },
       {
         "id": 39,
-        "key": "wood",
         "title": "Wood",
-        "input_title": "Wood"
+        "input_title": "Wood",
+        "key": 'MATERIAL:WOOD'
       },
       {
         "id": 40,
         "key": "silicone",
         "title": "Silicone",
-        "input_title": "Silicone"
+        "input_title": "Silicone",
+        "key": 'MATERIAL:SILICONE'
       },
       {
         "id": 41,
         "key": "plastic",
         "title": "ABS Plastic",
-        "input_title": "Plastic"
+        "input_title": "Plastic",
+        "key": 'MATERIAL:PLASTIC'
       },
       {
         "id": 42,
         "key": "glass",
         "title": "Glass",
-        "input_title": "Glass"
+        "input_title": "Glass",
+        "key": 'MATERIAL:GLASS'
       },
       {
         "id": 43,
         "key": "ceramic",
         "title": "Ceramic",
-        "input_title": "Ceramic"
+        "input_title": "Ceramic",
+        "key": 'MATERIAL:CERAMIC'
       },
       {
         "id": 44,
@@ -389,25 +406,25 @@ module.exports = [
     "answers": [
       {
         "id": 48,
-        "key": "0__25",
+        "key": "PRICE:0__25",
         "calculate": "price",
         "title": "0-25%"
       },
       {
         "id": 49,
-        "key": "25__50",
+        "key": "PRICE:25__50",
         "calculate": "price",
         "title": "25-50%"
       },
       {
         "id": 50,
-        "key": "50__75",
+        "key": "PRICE:50__75",
         "calculate": "price",
         "title": "50-75%"
       },
       {
         "id": 51,
-        "key": "75__100",
+        "key": "PRICE:75__100",
         "calculate": "price",
         "title": "75-100%"
       }
