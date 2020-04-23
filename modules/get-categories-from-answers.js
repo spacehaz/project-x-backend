@@ -29,7 +29,6 @@ const getCategoriesFromAnswers = ({ answers, maxPrice, keywordsFromUser }) => {
     }
     return values.map(value => `1_${value}`).join(' ')
   }).join(' ').trim() + ' 1_' + DEFAULT_KEYWORDS
-  console.log({ categoriesJoined })
   return {
     min,
     max,
