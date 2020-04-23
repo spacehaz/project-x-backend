@@ -50,7 +50,7 @@ const defineKeywords = ({ keywords, primary }) => {
     })
     .map(keyword => {
       if (keyword.indexOf('_') === -1) { return keyword }
-      return keyword.split('_')[1]
+      return (keyword.split('_')[1].replace('-', ' '))
     }).join(' ')
 }
 
