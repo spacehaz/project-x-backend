@@ -73,13 +73,10 @@ const getItems = async (req, res, next) => {
       const data = await ebayRequest({ keywords: currentKeywords, min, max })
       const { itemSummaries: ultimateSummary } = JSON.parse(data)
       if (!ultimateSummary) {
-        console.log('not successful', currentKeywords)
         return res.send({ data: [], success: false, keywords: currentKeywords })
       }
-      console.log('ultimate was successful', currentKeywords)
       return res.send({ data: ultimateSummary, success: true, keywords: currentKeywords })
     }
-    console.log('initial was successful', currentKeywords)
     return res.send({ data: itemSummaries, success: true, keywords: currentKeywords })
   } catch (e) {
     next(new BadRequestError(BAD_REQUEST))
