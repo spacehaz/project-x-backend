@@ -66,6 +66,11 @@ module.exports = [
         "title": "Intersex female reproductive organs",
         "input_title": "",
         "key": 'GENDER:FEMALE'
+      }, {
+        "id": 9,
+        "title": "Inersex male & female reproductive organs",
+        "input_title": "",
+        "key": 'GENDER:FEMALE_MALE'
       }
     ]
   },
@@ -75,66 +80,71 @@ module.exports = [
     "id": 5,
     "answers": [
       {
-        "id": 9,
+        "id": 10,
         "title": "Male",
         "input_title": "",
         "key": 'GENDER:MALE'
       },
       {
-        "id": 10,
+        "id": 11,
         "title": "Female",
         "input_title": "",
         "key": 'GENDER:FEMALE'
       },
       {
-        "id": 11,
+        "id": 12,
         "title": "Intersex male reproductive organs",
         "input_title": "",
         "key": 'GENDER:MALE'
       }, {
-        "id": 12,
+        "id": 13,
         "title": "Intersex female reproductive organs",
         "input_title": "",
         "key": 'GENDER:FEMALE'
+      }, {
+        "id": 14,
+        "title": "Inersex male & female reproductive organs",
+        "input_title": "",
+        "key": 'GENDER:FEMALE_MALE'
       }
     ]
   },
   {
-    "title": "Can you have sex with your partner offline?",
+    "title": "Are you physically isolated form your partner due to pandemic?",
     "condition": "1__2/3__4",
     "id": 6,
     "answers": [
       {
-        "id": 13,
+        "id": 15,
         "title": "Yes",
-        "input_title": ""
+        "input_title": "Online"
       },
       {
-        "id": 14,
+        "id": 16,
         "title": "No",
-        "input_title": "Online"
+        "input_title": ""
       }
     ]
   },
   {
-    "title": "What’s your experience?",
+    "title": "What's your experience with sex toys?",
     "condition": "1__2",
     "id": 7,
     "answers": [
       {
-        "id": 15,
+        "id": 17,
         "title": "Never tried",
         "input_title": "newbie",
         "key": 'EXPERIENCE:NEWBIE'
       },
       {
-        "id": 16,
+        "id": 18,
         "title": "Tried couple times, looking for new",
         "input_title": "amateur",
         "key": 'EXPERIENCE:AMATEUR'
       },
       {
-        "id": 17,
+        "id": 19,
         "title": "Let’s just say I have some experience",
         "input_title": "pro",
         "key": 'EXPERIENCE:PRO'
@@ -147,59 +157,59 @@ module.exports = [
     "id": 8,
     "answers": [
       {
-        "id": 18,
+        "id": 20,
         "title": "The clit",
-        "condition": "4__6||8",
+        "condition": "4__6||8||9",
         "input_title": "For the clit",
         "key": 'TYPE:DILDO'
       },
       {
-        "id": 19,
+        "id": 21,
         "title": "Feel it inside",
-        "condition": "4__6||8",
+        "condition": "4__6||8||9",
         "input_title": "Dildo",
         "key": 'TYPE:DILDO'
       },
       {
-        "id": 20,
+        "id": 22,
         "title": "G-spot",
-        "condition": "4__6||8",
+        "condition": "4__6||8||9",
         "input_title": "For g-spot",
          "key": 'TYPE:G-SPOT'
       },
       {
-        "id": 21,
+        "id": 23,
         "title": "Anal",
-        "condition": "4__6||8",
+        "condition": "4__6||8||9",
         "input_title": "For anal",
         "key": 'TYPE:ANAL'
-      },
-      {
-        "id": 22,
-        "title": "Penis",
-        "key": "TYPE:VAGINA",
-        "condition": "4__5||7",
-        "input_title": "For penis"
-      },
-      {
-        "id": 23,
-        "title": "Balls",
-        "key": "TYPE:TESTICLES",
-        "condition": "4__5||7",
-        "input_title": "For Balls"
       },
       {
         "id": 24,
+        "title": "Penis",
+        "key": "TYPE:VAGINA",
+        "condition": "4__5||7||9",
+        "input_title": "For penis"
+      },
+      {
+        "id": 25,
+        "title": "Balls",
+        "key": "TYPE:TESTICLES",
+        "condition": "4__5||7||9",
+        "input_title": "For Balls"
+      },
+      {
+        "id": 26,
         "title": "Anal",
-        "condition": "4__5||7",
+        "condition": "4__5||7||9",
         "input_title": "For anal",
         "key": 'TYPE:ANAL'
       },
       {
-        "id": 25,
+        "id": 27,
         "title": "Prostate",
         "key": "prostate",
-        "condition": "4__5||7",
+        "condition": "4__5||7||9",
         "input_title": "For prostate",
         "key": 'TYPE:PROSTATE'
       }
@@ -211,14 +221,14 @@ module.exports = [
     "id": 9,
     "answers": [
       {
-        "id": 26,
+        "id": 28,
         "title": "yes",
         "key": "", // подумать насчет категории
         "input_title": null,
         "key": 'EXTRA:VIBRO'
       },
       {
-        "id": 27,
+        "id": 29,
         "title": "no",
         "key": null,
         "input_title": null
@@ -227,17 +237,17 @@ module.exports = [
   },
   {
     "title": "Do you want to use it taking a bath? ",
-    "condition": "1__2/9__26",
+    "condition": "1__2/9__28",
     "id": 10,
     "answers": [
       {
-        "id": 28,
+        "id": 30,
         "title": "yes",
         "input_title": "",
         "key": 'EXTRA:WATERPROOF'
       },
       {
-        "id": 29,
+        "id": 31,
         "title": "no",
         "key": null,
         "input_title": ""
@@ -245,28 +255,9 @@ module.exports = [
     ]
   },
   {
-    "title": "How portable should it be?",
-    "condition": "1__2/9__26",
-    "id": 11,
-    "answers": [
-      {
-        "id": 30,
-        "title": "home use only",
-        "input_title": ""
-      },
-      {
-        "id": 31,
-        "key": null,
-        "input_title": "portable",
-        "title": "Planning to travel",
-        "key": 'SIZE:PORTABLE'
-      }
-    ]
-  },
-  {
     "title": "Are you ok with some noise? ",
-    "id": 12,
-    "condition": "1__2/9__26",
+    "id": 11,
+    "condition": "1__2/9__28",
     "answers": [
       {
         "id": 32,
@@ -285,8 +276,8 @@ module.exports = [
   },
   {
     "title": "Do you want to control it with your smartphone?",
-    "id": 13,
-    "condition": "1__2/9__26",
+    "id": 12,
+    "condition": "1__2/9__28",
     "answers": [
       {
         "id": 34,
@@ -306,7 +297,7 @@ module.exports = [
   {
     "title": "Are you allergic to latex?",
     "condition": "1__2",
-    "id": 14,
+    "id": 13,
     "answers": [
       {
         "id": 36,
@@ -323,12 +314,12 @@ module.exports = [
   {
     "title": "what material you’d like? ",
     "condition": "1__2",
-    "id": 15,
+    "id": 14,
     "answers": [
       {
         "id": 38,
         "title": "Latex",
-        "condition": "14__37",
+        "condition": "13__37",
         "input_title": "Latex",
         "key": 'MATERIAL:LATEX'
       },
@@ -376,8 +367,8 @@ module.exports = [
   },
   {
     "title": "How much time are you ready to spend to take care of your toy?",
-    "condition": "1__2/15__44",
-    "id": 16,
+    "condition": "1__2/14__44",
+    "id": 15,
     "answers": [
       {
         "id": 45,
@@ -401,7 +392,7 @@ module.exports = [
   },
   {
     "title": "What’s your budget?",
-    "id": 17,
+    "id": 16,
     "condition": "1__2",
     "answers": [
       {
