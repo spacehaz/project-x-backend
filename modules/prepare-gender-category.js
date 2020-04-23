@@ -7,10 +7,17 @@ module.exports = ({ keywords }) => {
   if (keywords[0] === 'MALE') {
     if (keywords[1] === 'FEMALE') { return ['MALE'] }
     if (keywords[1] === 'MALE') { return ['GAY'] }
+    if (keywords[1] === 'FEMALE_MALE') { return ['GAY'] }
   }
   if (keywords[0] === 'FEMALE') {
     if (keywords[1] === 'FEMALE') { return ['LESBIAN'] }
     if (keywords[1] === 'MALE') { return ['FEMALE'] }
+    if (keywords[1] === 'FEMALE_MALE') { return ['LESBIAN'] }
+  }
+  if (keywords[0] === 'FEMALE_MALE') {
+    if (keywords[1] === 'FEMALE') { return ['LESBIAN'] }
+    if (keywords[1] === 'MALE') { return ['GAY'] }
+    if (keywords[1] === 'FEMALE_MALE') { return ['GAY_LESBIAN'] }
   }
   return keywords
 }

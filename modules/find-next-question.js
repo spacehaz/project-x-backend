@@ -20,15 +20,14 @@ const checkAnswerValidity = ({ answer, answers }) => {
         return false
       }
     } else {
-      const [ answer1, answer2 ] = singleAnswerCondition[1].split('||')
-      if (
-        Number(answers[singleAnswerCondition[0]]) !== Number(answer1) &&
-        Number(answers[singleAnswerCondition[0]]) !== Number(answer2) 
-      ) {
-        return false
+      const conditionAnswers = singleAnswerCondition[1].split('||')
+      for (let x = 0; x < conditionAnswers.length; x++) {
+        if (Number(answers[singleAnswerCondition[0]]) === Number(conditionAnswers[x])) {
+          return true
+        }
       }
+      return false
     }
-    
   }
   return true
 }
