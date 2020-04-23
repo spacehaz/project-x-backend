@@ -24,7 +24,7 @@ const getCategoriesFromAnswers = ({ answers, maxPrice, keywordsFromUser }) => {
     return category !== 'PRICE'
   }).map(category => {
     const values = Array.from(new Set(categories[category]))
-    if (['CONTROL', 'SIZE', 'EXPERIENCE', 'EXTRA', 'GENDER'].indexOf(category) > -1) {
+    if (['CONTROL', 'SIZE', 'EXPERIENCE', 'EXTRA'].indexOf(category) > -1) {
       return values.map(value => `0_${value}`).join(' ')
     }
     return values.map(value => `1_${value}`).join(' ')
