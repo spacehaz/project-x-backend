@@ -151,7 +151,7 @@ module.exports = [
         "title": "The clit",
         "condition": "4__6||8",
         "input_title": "For the clit",
-        "key": 'TYPE:PENIS'
+        "key": 'TYPE:DILDO'
       },
       {
         "id": 19,
@@ -172,7 +172,7 @@ module.exports = [
         "title": "Anal",
         "condition": "4__6||8",
         "input_title": "For anal",
-        "key": 'TYPE:BUTT-PLUG'
+        "key": 'TYPE:BUTT'
       },
       {
         "id": 22,
@@ -193,7 +193,7 @@ module.exports = [
         "title": "Anal",
         "condition": "4__5||7",
         "input_title": "For anal",
-        "key": 'TYPE:BUTT-PLUG'
+        "key": 'TYPE:BUTT'
       },
       {
         "id": 25,
