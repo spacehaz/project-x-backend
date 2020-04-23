@@ -172,7 +172,7 @@ module.exports = [
         "title": "Anal",
         "condition": "4__6||8",
         "input_title": "For anal",
-        "key": 'TYPE:BUTT'
+        "key": 'TYPE:ANAL'
       },
       {
         "id": 22,
@@ -193,7 +193,7 @@ module.exports = [
         "title": "Anal",
         "condition": "4__5||7",
         "input_title": "For anal",
-        "key": 'TYPE:BUTT'
+        "key": 'TYPE:ANAL'
       },
       {
         "id": 25,
