@@ -46,7 +46,7 @@ const defineKeywords = ({ keywords, primary }) => {
     .split(' ')
     .filter(keyword => {
       if (!primary) { return true }
-      return keyword.indexOf('1_') > -1
+      return keyword.indexOf('1_') > -1 || keyword === DEFAULT_KEYWORDS
     })
     .map(keyword => {
       if (keyword.indexOf('_') === -1) { return keyword }
