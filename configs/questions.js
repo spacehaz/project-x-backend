@@ -117,6 +117,7 @@ module.exports = [
       {
         "id": 15,
         "title": "Yes",
+        "key": 'CONTROL:REMOTE',
         "input_title": "Online"
       },
       {
@@ -182,7 +183,7 @@ module.exports = [
         "title": "Anal",
         "condition": "4__6||8||9",
         "input_title": "For anal",
-        "key": 'TYPE:ANAL'
+        "key": 'TYPE:DILDO'
       },
       {
         "id": 24,
@@ -203,7 +204,7 @@ module.exports = [
         "title": "Anal",
         "condition": "4__5||7||9",
         "input_title": "For anal",
-        "key": 'TYPE:ANAL'
+        "key": 'TYPE:DILDO'
       },
       {
         "id": 27,
@@ -284,7 +285,7 @@ module.exports = [
         "title": "Yes",
         "key": "bluetooth",
         "input_title": "",
-        "key": 'CONTROL:WIRELESS'
+        "key": 'CONTROL:REMOTE'
       },
       {
         "id": 35,
