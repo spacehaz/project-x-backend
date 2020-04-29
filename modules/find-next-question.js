@@ -11,7 +11,6 @@ const findNextQuestion = ({ answers }) => {
 
 const checkAnswerValidity = ({ answer, answers }) => {
   const { condition } = answer
-  console.log({ answer, answers })
   if (!condition) { return answer }
   // одновременно должно выполняться
   const conditionParsed = condition.split('/')
@@ -55,7 +54,6 @@ const checkQuestionValidity = ({ questionId, answers }) => {
       return checkQuestionValidity({ answers, questionId: Number(questionId) + 1 })
     }
   }
-  console.log('here')
   return { ...question, answers: question.answers ? question.answers.filter(answer => checkAnswerValidity({ answers, answer })) : null }
 }
 
