@@ -49,7 +49,7 @@ const defineKeywords = ({ keywords, primary }) => {
       return keyword.indexOf('1_') > -1 || keyword === DEFAULT_KEYWORDS
     })
     .map(keyword => {
-      if (keyword.indexOf('_') === -1) { return keyword }
+      if (keyword.indexOf('_') === -1) { return keyword.replace('-', ' ') }
       return (keyword.split('_')[1].replace('-', ' '))
     }).join(' ')
 }
