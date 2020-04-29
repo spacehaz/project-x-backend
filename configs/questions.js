@@ -163,7 +163,7 @@ module.exports = [
       {
         "id": 24,
         "title": "Penis",
-        "key": "TYPE:VAGINA",
+        "key": "TYPE:MASTURBATOR",
         "condition": "2__5||7||9",
         "input_title": "For penis"
       },
@@ -197,7 +197,7 @@ module.exports = [
       {
         "id": 28,
         "title": "yes",
-        "key": "EXTRA:VIBRO",
+        "key": "EXTRA:VIBRATION",
         "input_title": null
       },
       {
@@ -234,7 +234,7 @@ module.exports = [
     "answers": [
       {
         "id": 32,
-        "key": "EXTRA:VIBRO",
+        "key": "EXTRA:VIBRATION",
         "title": "Yes",
         "input_title": ""
       },

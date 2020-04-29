@@ -2,7 +2,7 @@ const { NotFoundError, BadRequestError } = require('../errors')
 const Ebay = require('ebay-node-api');
 const { NOT_FOUND, BAD_REQUEST } = require('../configs/constants')
 const Filter = require('../models/filter')
-const { getCategoriesFromAnswers } = require('../modules')
+const { getCategoriesFromAnswers, mergeKeywords } = require('../modules')
 const { DEFAULT_KEYWORDS } = require('../configs/config')
 
 const {
@@ -31,7 +31,7 @@ const ebayRequest = ({ keywords, min, max }) => {
         ebay.searchItems({
           keyword: keywords,
           limit: 200,
-          filter: `price:[${min || 0}..${max || 10000}],priceCurrency:USD`
+          filter: `price:[${min || 0}..${max || 10000}]`
         }).then(data => {
           resolve(data)
         }, (error) => {
@@ -41,7 +41,9 @@ const ebayRequest = ({ keywords, min, max }) => {
   })
 }
 
-const defineKeywords = ({ keywords, primary }) => {
+const defineKeywords = ({ categories, primary }) => {
+  console.log({ mergeKeywords, categories })
+  const keywords = mergeKeywords({ categories })
   return keywords
     .split(' ')
     .filter(keyword => {
@@ -52,6 +54,7 @@ const defineKeywords = ({ keywords, primary }) => {
       if (keyword.indexOf('_') === -1) { return keyword.replace('-', ' ') }
       return (keyword.split('_')[1].replace('-', ' '))
     }).join(' ')
+
 }
 
 const getItems = async (req, res, next) => {
@@ -64,12 +67,12 @@ const getItems = async (req, res, next) => {
 
   try {
     const answersParsed = answers && JSON.parse(answers)
-    const { keywords, min, max } = getCategoriesFromAnswers({ answers: answersParsed, maxPrice, keywordsFromUser })
-    const currentKeywords = defineKeywords({ keywords })
+    const { categories, min, max } = getCategoriesFromAnswers({ answers: answersParsed, maxPrice, keywordsFromUser })
+    const currentKeywords = defineKeywords({ categories })
     const data = await ebayRequest({ keywords: currentKeywords, min, max })
     const { itemSummaries } = JSON.parse(data)
     if (!itemSummaries) {
-      const currentKeywords = defineKeywords({ keywords, primary: true })
+      const currentKeywords = defineKeywords({ categories, primary: true })
       const data = await ebayRequest({ keywords: currentKeywords, min, max })
       const { itemSummaries: ultimateSummary } = JSON.parse(data)
       if (!ultimateSummary) {
