@@ -42,7 +42,6 @@ const ebayRequest = ({ keywords, min, max }) => {
 }
 
 const defineKeywords = ({ categories, primary }) => {
-  console.log({ mergeKeywords, categories })
   const keywords = mergeKeywords({ categories })
   return keywords
     .split(' ')
@@ -70,18 +69,22 @@ const getItems = async (req, res, next) => {
     const { categories, min, max } = getCategoriesFromAnswers({ answers: answersParsed, maxPrice, keywordsFromUser })
     const currentKeywords = defineKeywords({ categories })
     const data = await ebayRequest({ keywords: currentKeywords, min, max })
-    const { itemSummaries } = JSON.parse(data)
+    const { itemSummaries } = data && JSON.parse(data)
     if (!itemSummaries) {
-      const currentKeywords = defineKeywords({ categories, primary: true })
-      const data = await ebayRequest({ keywords: currentKeywords, min, max })
-      const { itemSummaries: ultimateSummary } = JSON.parse(data)
-      if (!ultimateSummary) {
-        return res.send({ data: [], success: false, keywords: currentKeywords })
-      }
-      return res.send({ data: ultimateSummary, success: true, keywords: currentKeywords })
+      return res.send({ data: [], success: false, keywords: currentKeywords })
     }
+    // if (!itemSummaries) {
+    //   const currentKeywords = defineKeywords({ categories, primary: true })
+    //   const data = await ebayRequest({ keywords: currentKeywords, min, max })
+    //   const { itemSummaries: ultimateSummary } = JSON.parse(data)
+    //   if (!ultimateSummary) {
+    //     return res.send({ data: [], success: false, keywords: currentKeywords })
+    //   }
+    //   return res.send({ data: ultimateSummary, success: true, keywords: currentKeywords })
+    // }
     return res.send({ data: itemSummaries, success: true, keywords: currentKeywords })
   } catch (e) {
+    console.log({ e })
     next(new BadRequestError(BAD_REQUEST))
   }
   // request('https://api.sandbox.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=HazretBa-BuymeApp-SBX-919766d65-ddae58b1&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&keywords=iphone&outputSelector(0)=SellerInfo', {

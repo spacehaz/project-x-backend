@@ -124,7 +124,7 @@ module.exports = [
         "id": 19,
         "title": "Let’s just say I have some experience",
         "input_title": "pro",
-        "key": "EXPERIENCE:PRO"
+        "key": "EXPERIENCE:SEX-MACHINE"
       }
     ]
   },
@@ -158,7 +158,7 @@ module.exports = [
         "title": "Anal",
         "condition": "2__6||8||9",
         "input_title": "For anal",
-        "key": "TYPE:DILDO"
+        "key": "TYPE:ANAL-TOY"
       },
       {
         "id": 24,
@@ -179,7 +179,7 @@ module.exports = [
         "title": "Anal",
         "condition": "2__5||7||9",
         "input_title": "For anal",
-        "key": "TYPE:DILDO"
+        "key": "TYPE:ANAL-TOY"
       },
       {
         "id": 27,
@@ -234,13 +234,13 @@ module.exports = [
     "answers": [
       {
         "id": 32,
-        "key": "EXTRA:VIBRATION",
+        "key": null,
         "title": "Yes",
         "input_title": ""
       },
       {
         "id": 33,
-        "key": null,
+        "key": "EXTRA:SILENT",
         "title": "No",
         "input_title": ""
       }
@@ -254,7 +254,7 @@ module.exports = [
       {
         "id": 34,
         "title": "Yes",
-        "key": "CONTROL:REMOTE",
+        "key": "CONTROL:APP",
         "input_title": ""
       },
       {
