@@ -43,10 +43,11 @@ const checkAnswerValidity = ({ answer, answers }) => {
 }
 
 const checkQuestionValidity = ({ questionId, answers }) => {
+
   const question = findQuestionById({ questionId })
   if (!question) { return }
   const { condition } = question
-  if (!condition) { return question }
+  if (!condition) { return { ...question, answers: question.answers ? question.answers.filter(answer => checkAnswerValidity({ answers, answer })) : null } }
   const conditionParsed = condition.split('/')
   for (let x = 0; x < conditionParsed.length; x++) {
     const singleQiestionCondition = conditionParsed[x].split('__')
