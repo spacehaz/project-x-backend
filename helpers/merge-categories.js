@@ -30,7 +30,6 @@ module.exports = ({ result }) => {
     }
     return
   })
-  console.log({ initialData })
   return initialData
 }
 

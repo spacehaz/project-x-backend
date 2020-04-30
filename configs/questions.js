@@ -170,7 +170,7 @@ module.exports = [
       {
         "id": 25,
         "title": "Balls",
-        "key": "TYPE:TESTICLES",
+        "key": "TYPE:TESTICLE",
         "condition": "2__5||7||9",
         "input_title": "For Balls"
       },
