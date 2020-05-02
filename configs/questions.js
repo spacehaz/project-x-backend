@@ -129,7 +129,7 @@ module.exports = [
     ]
   },
   {
-    "title": "What’s a favorite in musturbation?",
+    "title": "What’s a favorite in masturbation?",
     "id": 6,
     "answers": [
       {
