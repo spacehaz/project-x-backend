@@ -1,11 +1,8 @@
-const questions = require('../configs/questions.js')
-
-module.exports = ({ keywords, maxPrice }) => {
-  if (keywords.length === 0) { return [] }
-  const price = keywords[0]
-  const [ min, max ] = price.split('__')
+module.exports = (value, maxPrice) => {
+  if (!value) { return [] }
+  const [ min, max ] = value.split('__')
   const percentage = maxPrice / 100
-  return [
-    percentage * min, percentage * max
-  ]
+  return {
+    min: percentage * min, max: percentage * max
+  }
 }
