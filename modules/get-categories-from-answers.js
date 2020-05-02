@@ -13,7 +13,7 @@ const getCategoriesFromAnswers = ({ answers, maxPrice }) => {
   })
 
   const categories = parseCategories({ keywords, maxPrice })
-  const [ min, max ] = categories['PRICE'] || []
+  const { min, max } = categories['PRICE'][0] || {}
 
   return {  
     min,

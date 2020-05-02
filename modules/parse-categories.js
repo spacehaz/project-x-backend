@@ -12,21 +12,16 @@ module.exports = ({ keywords, maxPrice }) => {
     sum[category] = []
     return sum
   }, {})
+
+  // ответы пользователя пихаются по категориям
   const categoriesGroups = keywords.reduce((sum, item, idx) => {
     const [ category, value ] = item.split(':')
-    sum[category] = [...sum[category], value]
+    sum[category] = [...sum[category], CATEGORIES[category](value, maxPrice)]
     return sum
   }, initialSum)
-  const result = Object.keys(categoriesGroups).reduce((sum, category) => {
-    sum[category] = CATEGORIES[category]({ keywords: categoriesGroups[category], maxPrice })
-    return sum
-  }, {})
 
-  return result
+  return categoriesGroups
 }
-
-
-
 
 const CATEGORIES = {
   'GENDER': prepareGenderCategory,

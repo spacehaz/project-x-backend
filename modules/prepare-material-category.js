@@ -1,5 +1,1 @@
-const questions = require('../configs/questions.js')
-
-module.exports = ({ keywords }) => {
-  return keywords
-}
+module.exports = (value) => value

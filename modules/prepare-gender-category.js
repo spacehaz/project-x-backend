@@ -1,3 +1,1 @@
-module.exports = ({ keywords }) => {
-  return keywords
-}
+module.exports = (value) => value
