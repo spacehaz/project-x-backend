@@ -196,13 +196,13 @@ module.exports = [
     "answers": [
       {
         "id": 28,
-        "title": "yes",
+        "title": "Yes",
         "key": "EXTRA:VIBRATION",
         "input_title": null
       },
       {
         "id": 29,
-        "title": "no",
+        "title": "No",
         "key": null,
         "input_title": null
       }
