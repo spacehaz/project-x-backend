@@ -62,7 +62,7 @@ module.exports = [
     },
     category_2: {
       kind: 'GENDER',
-      value: 'FEMALE_MALE'
+      value: 'FEMALE-MALE'
     },
     output: {
       kind: 'GENDER',
@@ -76,7 +76,7 @@ module.exports = [
     },
     category_2: {
       kind: 'GENDER',
-      value: 'FEMALE_MALE'
+      value: 'FEMALE-MALE'
     },
     output: {
       kind: 'GENDER',
@@ -86,21 +86,21 @@ module.exports = [
   }, {
     category_1: {
       kind: 'GENDER',
-      value: 'FEMALE_MALE'
+      value: 'FEMALE-MALE'
     },
     category_2: {
       kind: 'GENDER',
-      value: 'FEMALE_MALE'
+      value: 'FEMALE-MALE'
     },
     output: {
       kind: 'GENDER',
-      value: 'GAY_LESBIAN',
+      value: 'GAY-LESBIAN',
       weight: 1
     }
   }, {
     category_1: {
       kind: 'GENDER',
-      value: 'FEMALE_MALE'
+      value: 'FEMALE-MALE'
     },
     category_2: {
       kind: 'GENDER',
@@ -114,7 +114,7 @@ module.exports = [
   }, {
     category_1: {
       kind: 'GENDER',
-      value: 'FEMALE_MALE'
+      value: 'FEMALE-MALE'
     },
     category_2: {
       kind: 'GENDER',
@@ -125,21 +125,23 @@ module.exports = [
       value: 'LESBIAN',
       weight: 1
     }
-  }, {
-    category_1: {
-      kind: 'TYPE',
-      value: '*'
-    },
-    category_2: {
-      kind: 'GENDER',
-      value: '*'
-    },
-    output: {
-      kind: 'TYPE',
-      value: 1,
-      weight: 1
-    }
-  }, {
+  },
+  // {
+  //   category_1: {
+  //     kind: 'TYPE',
+  //     value: '*'
+  //   },
+  //   category_2: {
+  //     kind: 'GENDER',
+  //     value: '*'
+  //   },
+  //   output: {
+  //     kind: 'TYPE',
+  //     value: 1,
+  //     weight: 1
+  //   }
+  // },
+  {
     category_1: {
       kind: 'EXTRA',
       value: 'VIBRATION'
