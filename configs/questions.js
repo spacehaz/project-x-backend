@@ -47,7 +47,7 @@ module.exports = [
         "id": 9,
         "title": "Inersex male & female reproductive organs",
         "input_title": "",
-        "key": "GENDER:FEMALE_MALE"
+        "key": "GENDER:FEMALE-MALE"
       }
     ]
   },
@@ -84,7 +84,7 @@ module.exports = [
         "id": 14,
         "title": "Inersex male & female reproductive organs",
         "input_title": "",
-        "key": "GENDER:FEMALE_MALE"
+        "key": "GENDER:FEMALE-MALE"
       }
     ]
   },
@@ -196,13 +196,13 @@ module.exports = [
     "answers": [
       {
         "id": 28,
-        "title": "yes",
+        "title": "Yes",
         "key": "EXTRA:VIBRATION",
         "input_title": null
       },
       {
         "id": 29,
-        "title": "no",
+        "title": "No",
         "key": null,
         "input_title": null
       }
